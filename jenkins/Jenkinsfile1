@@ -1,9 +1,11 @@
 pipeline {
     agent any
+
     tools {
         jdk 'jdk17'
         nodejs 'node23'
     }
+
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
         DOCKER_IMAGE = 'harshalg01/zomato-app:latest'
@@ -12,7 +14,7 @@ pipeline {
     }
 
     stages {
-
+        
         stage ("clean workspace") {
             steps {
                 cleanWs()
@@ -44,9 +46,9 @@ pipeline {
                     }
                 }
             }
-    }
+            }
 
-        }
+        
 
 
         stage("Verify Deployment") {
@@ -59,7 +61,14 @@ pipeline {
                 """
             }
         }
-}
+    }
+
+        
+
+
+        
+
+    
 
     post {
         always {
