@@ -15,8 +15,10 @@ pipeline {
         }
         stage ("Git Checkout") {
             steps {
-                git 'https://github.com/harshal019/food-delivery-devops-microservices.git'            }
+                git 'https://github.com/harshal019/food-delivery-devops-microservices.git'            
+                }
         }
+
         stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
