@@ -26,25 +26,26 @@ pipeline {
         }
         
 
-        stage("Configure Kubeconfig") {
-            steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds']]) {
-
-                    sh " aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME} "
-                }
-            }
-        }
         stage("Deploy to Kubernetes") {
             steps {
-                dir("k8s") {
-                    sh """
-                        kubectl apply -f deployment.yaml
-                        kubectl apply -f service.yaml
-                        kubectl apply -f hpa.yaml
-                    """
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]]) {
+
+                    sh "aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}"
+
+                    dir("k8s") {
+                        sh """
+                            kubectl apply -f deployment.yaml
+                            kubectl apply -f service.yaml
+                            kubectl apply -f hpa.yaml
+                        """
+                    }
                 }
             }
+    }
+
         }
 
 
@@ -86,5 +87,5 @@ pipeline {
             )
         }
     }
-    
+
 }
