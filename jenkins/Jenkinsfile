@@ -45,10 +45,14 @@ pipeline {
 
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./app --disableYarnAudit --disableNodeAudit -n', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                dependencyCheck(
+                    additionalArguments: '--scan ./app --disableYarnAudit --disableNodeAudit',
+                    odcInstallation: 'DP-Check'
+                )
+                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
+
         stage ("Trivy File Scan") {
             steps {
                 sh "trivy fs . > trivy.txt"
