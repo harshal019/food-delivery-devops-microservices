@@ -15,21 +15,22 @@ pipeline {
         }
         stage ("Git Checkout") {
             steps {
-                git 'https://github.com/KastroVKiran/Zomato-Project-Kastro.git'
-            }
+                git 'https://github.com/harshal019/food-delivery-devops-microservices.git'            }
         }
         stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
-                    -Dsonar.projectKey=zomato '''
+                    sh ''' 
+                        $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
+                        -Dsonar.projectKey=zomato 
+                    '''
                 }
             }
         }
         stage("Code Quality Gate"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
                 }
             } 
         }
@@ -40,7 +41,7 @@ pipeline {
         }
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit -n', odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan ./app --disableYarnAudit --disableNodeAudit -n', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
     }
 }
@@ -49,42 +50,40 @@ pipeline {
                 sh "trivy fs . > trivy.txt"
             }
         }
+
         stage ("Build Docker Image") {
             steps {
-                sh "docker build -t zomato ."
+                sh "docker build -t zomato -f docker/Dockerfile ."
             }
         }
+
+        stage ("Trivy Image Scan") {
+            steps {
+                sh "trivy image zomato > trivy-image.txt"
+            }
+        }
+
         stage ("Tag & Push to DockerHub") {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker') {
-                        sh "docker tag zomato kastrov/zomato:latest "
-                        sh "docker push kastrov/zomato:latest "
+                        sh "docker tag zomato harshalg01/zomato-app:latest "
+                        sh "docker push harshalg01/zomato-app:latest "
                     }
-                }
-            }
-        }
-        stage('Docker Scout Image') {
-            steps {
-                script{
-                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
-                       sh 'docker-scout quickview kastrov/zomato:latest'
-                       sh 'docker-scout cves kastrov/zomato:latest'
-                       sh 'docker-scout recommendations kastrov/zomato:latest'
-                   }
                 }
             }
         }
         stage ("Deploy to Container") {
             steps {
-                sh 'docker run -d --name zomato -p 3000:3000 kastrov/zomato:latest'
+                sh 'docker rm -f zomato || true '
+                sh 'docker run -d --name zomato -p 3000:3000 harshalg01/zomato-app:latest'
             }
         }
     }
     post {
     always {
         emailext attachLog: true,
-            subject: "'${currentBuild.result}'",
+            subject: "${currentBuild.result}: Job ${env.JOB_NAME} #${env.BUILD_NUMBER}",
             body: """
                 <html>
                 <body>
@@ -100,9 +99,9 @@ pipeline {
                 </body>
                 </html>
             """,
-            to: 'kastrokiran@gmail.com',
+            to: 'harshaldgharat01@gmail.com',
             mimeType: 'text/html',
-            attachmentsPattern: 'trivy.txt'
+            attachmentsPattern: 'trivy*.txt'
         }
     }
 }
