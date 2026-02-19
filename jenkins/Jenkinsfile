@@ -34,17 +34,21 @@ pipeline {
                 }
             } 
         }
+
         stage("Install NPM Dependencies") {
             steps {
-                sh "npm install"
+                dir(app){
+                    sh "npm install"
+                }
             }
         }
+
         stage('OWASP FS SCAN') {
             steps {
                 dependencyCheck additionalArguments: '--scan ./app --disableYarnAudit --disableNodeAudit -n', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-    }
-}
+            }
+        }
         stage ("Trivy File Scan") {
             steps {
                 sh "trivy fs . > trivy.txt"
