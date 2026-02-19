@@ -53,12 +53,21 @@ pipeline {
 
         stage("Verify Deployment") {
             steps {
-                sh """
-                    kubectl rollout status deployment/zomato-app
-                    kubectl get pods
-                    kubectl get svc
-                    kubectl get hpa
-                """
+
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]]) {
+
+                    sh """
+                        aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
+
+                        kubectl rollout status deployment/zomato-app
+                        kubectl get pods
+                        kubectl get svc
+                        kubectl get hpa
+                    """
+                }
             }
         }
     }
