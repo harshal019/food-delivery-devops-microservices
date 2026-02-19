@@ -75,15 +75,19 @@ pipeline {
 
         stage ("Tag & Push to DockerHub") {
             steps {
-                script {
-                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-
-                        sh "docker tag zomato harshalg01/zomato-app:latest "
-                        sh "docker push harshalg01/zomato-app:latest "
-                    }
+                withCredentials([usernamePassword( credentialsId: 'docker',
+                    usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh """
+                        echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin
+                        docker tag zomato harshalg01/zomato-app:latest
+                        docker push harshalg01/zomato-app:latest
+                        docker logout
+                    """
                 }
             }
         }
+
         stage ("Deploy to Container") {
             steps {
                 sh 'docker rm -f zomato || true '
