@@ -129,13 +129,13 @@ eksctl create nodegroup \
 --nodes-max=4 \
 --node-volume-size=20 \
 --managed
-
+```
 
 ## Update kubeconfig
 
 ```bash
 aws eks update-kubeconfig --name zomato-cluster --region us-east-2
-
+```
 
 
 # CI Pipeline – Staging
@@ -194,7 +194,7 @@ Check Resources:
 kubectl get pods
 kubectl get svc
 kubectl get hpa
-
+```
 
 # 📈 Horizontal Pod Autoscaler (HPA)
 
@@ -223,9 +223,10 @@ Jenkins Monitoring Dashboard (ID: 9964)
 
 Grafana Default Login:
 
+```bash
 Username: admin
 Password: admin
-
+```
 
 # 🌐 Custom Domain Setup
 
@@ -237,8 +238,9 @@ A Record (Alias) mapping to ALB
 
 Example:
 
+```bash
 http://zomato.harshalgharat.site/
-
+```
 
 # 🔔 Email Notifications
 
