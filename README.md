@@ -148,6 +148,10 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 
 # 🔄 CI Pipeline – Staging
 
+### 📷 Jenkins Staging Pipeline
+
+![Staging Pipeline](images/jenkins-staging.png)
+
 ## Stages Implemented
 
 1. Clean Workspace  
@@ -168,6 +172,14 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 - Quality Gate enforcement
 - Automated email notifications
 - Artifact pushed to DockerHub
+
+### 📷 SonarQube Quality Gate
+
+![SonarQube](images/sonarqube.png)
+
+### 📷 DockerHub Image
+
+![DockerHub](images/dockerhub.png)
 
 ---
 
@@ -199,6 +211,10 @@ kubectl get pods
 kubectl get svc
 kubectl get hpa
 ```
+### 📷 Running Pods
+
+![Pods](images/k8s-pods.png)
+
 ---
 
 # 📈 Horizontal Pod Autoscaler (HPA)
@@ -209,6 +225,9 @@ kubectl get hpa
 
 * CPU-based scaling enabled
 
+### 📷 HPA Scaling
+
+![HPA](images/hpa.png)
 ---
 
 # 📊 Monitoring & Observability
@@ -216,9 +235,17 @@ kubectl get hpa
 
 * Prometheus (Metrics collection)
 
+### 📷 Prometheus Targets
+
+![Prometheus](images/prometheus.png)
+
 * Node Exporter
 
 * Grafana (Visualization dashboards)
+
+### 📷 Grafana Dashboard
+
+![Grafana](images/grafana.png)
 
 ## Dashboards Imported
 
