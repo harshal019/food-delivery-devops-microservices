@@ -114,6 +114,8 @@ eksctl create cluster --name=zomato-cluster \
 --version=1.30 \
 --without-nodegroup
 
+```
+
 ## Create Managed Node 
 
 ```bash
