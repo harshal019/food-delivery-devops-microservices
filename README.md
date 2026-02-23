@@ -201,33 +201,33 @@ kubectl get hpa
 
 # 📈 Horizontal Pod Autoscaler (HPA)
 
-Minimum Pods: 2
+* Minimum Pods: 2
 
-Maximum Pods: 4
+* Maximum Pods: 4
 
-CPU-based scaling enabled
+* CPU-based scaling enabled
 
 ---
 
 # 📊 Monitoring & Observability
 
-Monitoring Stack:
+* Monitoring Stack:
 
-Prometheus (Port 9090)
+* Prometheus (Port 9090)
 
-Node Exporter
+* Node Exporter
 
-Grafana (Port 3000)
+* Grafana (Port 3000)
 
 ---
 
 # Dashboards Imported
 
-Node Exporter Dashboard (ID: 1860)
+* Node Exporter Dashboard (ID: 1860)
 
-Jenkins Monitoring Dashboard (ID: 9964)
+* Jenkins Monitoring Dashboard (ID: 9964)
 
-Grafana Default Login:
+* Grafana Default Login:
 
 ```bash
 Username: admin
@@ -238,11 +238,11 @@ Password: admin
 
 # 🌐 Custom Domain Setup
 
-AWS Application Load Balancer
+* AWS Application Load Balancer
 
-Route 53 Hosted Zone
+* Route 53 Hosted Zone
 
-A Record (Alias) mapping to ALB
+* A Record (Alias) mapping to ALB
 
 Example:
 
@@ -253,32 +253,34 @@ http://zomato.harshalgharat.site/
 ---
 # 🔔 Email Notifications
 
-Configured using:
+## Configured using:
 
-Gmail App Password
+* Gmail App Password
 
-Extended Email Plugin
+* Extended Email Plugin
 
-HTML Email Template
+* HTML Email Template
 
-Security scan reports attached
+* Security scan reports attached
 
-Triggers:
+## Triggers:
 
-Always
+* Always
 
-Success
+* Success
 
-Failure
+* Failure
 
 ---
-# 🔐 Security Implementation
-Layer	Tool
-Code Quality	SonarQube
-Dependency Security	OWASP
-Container Security	Trivy
-IAM Control	AWS IAM
-Auto Scaling	HPA
+## 🔐 Security Implementation
+
+| Layer               | Tool        |
+|--------------------|------------|
+| **Code Quality**   | SonarQube  |
+| **Dependency Security** | OWASP |
+| **Container Security**  | Trivy |
+| **IAM Control**    | AWS IAM    |
+| **Auto Scaling**   | HPA        |
 
 ---
 
