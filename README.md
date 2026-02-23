@@ -138,47 +138,40 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 ```
 ---
 
-# CI Pipeline – Staging
+# 🔄 CI Pipeline – Staging
 
-## Stages Implemented
+## 📌 Stages Implemented
 
-1.Clean Workspace
+1. Clean Workspace  
+2. Git Checkout  
+3. SonarQube Analysis  
+4. Quality Gate Validation  
+5. Install Dependencies  
+6. OWASP Dependency Scan  
+7. Trivy File Scan  
+8. Docker Build  
+9. Docker Image Scan  
+10. Push Image to DockerHub  
+11. Run Container (Testing)  
 
-2.Git Checkout
+### ✅ Pipeline Highlights
 
-3.SonarQube Analysis
-
-4.Quality Gate Validation
-
-5.Install Dependencies
-
-6.OWASP Dependency Scan
-
-7.Trivy File Scan
-
-8.Docker Build
-
-9.Docker Image Scan
-
-10.Push Image to DockerHub
-
-11.Run Container (Testing)
-
-✔ Security integrated
-✔ Quality validation
-✔ Email notification configured
+- Security integrated  
+- Quality validation enabled  
+- Email notification configured  
 
 ---
+
 # 🚀 CD Pipeline – Production
 
-## Flow
+## 📌 Deployment Flow
 
-Staging Success
-→ Production Pipeline
-→ Configure kubeconfig
-→ Apply Kubernetes Manifests
-→ Verify Deployment
-→ Application Live
+Staging Success  
+→ Production Pipeline  
+→ Configure kubeconfig  
+→ Apply Kubernetes Manifests  
+→ Verify Deployment  
+→ Application Live  
 
 ---
 
@@ -253,52 +246,42 @@ http://zomato.harshalgharat.site/
 ---
 # 🔔 Email Notifications
 
-## Configured using:
+## 📌 Configured Using
 
-* Gmail App Password
+- Gmail App Password  
+- Extended Email Plugin  
+- HTML Email Template  
+- Security scan reports attached automatically  
 
-* Extended Email Plugin
+## 📌 Triggers Enabled
 
-* HTML Email Template
-
-* Security scan reports attached
-
-## Triggers:
-
-* Always
-
-* Success
-
-* Failure
+- Always  
+- Success  
+- Failure  
 
 ---
-## 🔐 Security Implementation
 
-| Layer               | Tool        |
-|--------------------|------------|
-| **Code Quality**   | SonarQube  |
-| **Dependency Security** | OWASP |
-| **Container Security**  | Trivy |
-| **IAM Control**    | AWS IAM    |
-| **Auto Scaling**   | HPA        |
+# 🔐 Security Implementation
+
+| Security Layer        | Tool Used                |
+|-----------------------|--------------------------|
+| **Code Quality**      | SonarQube                |
+| **Dependency Security** | OWASP Dependency Check |
+| **Container Security**  | Trivy                  |
+| **IAM Access Control**  | AWS IAM                |
+| **Auto Scaling**        | Kubernetes HPA         |
 
 ---
 
 # 🏆 Skills Demonstrated
 
-DevOps Automation
-
-Kubernetes Administration
-
-CI/CD Pipeline Design
-
-AWS Cloud Infrastructure
-
-Monitoring & Observability
-
-DevSecOps Implementation
-
-Production Deployment
+- DevOps Automation  
+- Kubernetes Administration  
+- CI/CD Pipeline Design  
+- AWS Cloud Infrastructure  
+- Monitoring & Observability  
+- DevSecOps Implementation  
+- Production Deployment  
 
 ---
 
