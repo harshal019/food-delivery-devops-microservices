@@ -105,7 +105,7 @@ https://github.com/harshal019/food-delivery-devops-microservices.git
 
 # 🚀 EKS Cluster Setup
 
-## Create Cluster
+## 📌 Create Cluster
 
 ```bash
 eksctl create cluster --name=zomato-cluster \
@@ -114,7 +114,9 @@ eksctl create cluster --name=zomato-cluster \
 --version=1.30 \
 --without-nodegroup
 
-## Create Managed Node Group
+## Create Managed Node 
+
+```bash
 eksctl create nodegroup \
 --cluster=zomato-cluster \
 --region=us-east-2 \
@@ -129,6 +131,7 @@ eksctl create nodegroup \
 
 ## Update kubeconfig
 
+```bash
 aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 
 
@@ -185,6 +188,7 @@ Staging Success
 
 Check Resources:
 
+```bash
 kubectl get pods
 kubectl get svc
 kubectl get hpa
