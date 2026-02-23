@@ -173,10 +173,13 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 - Automated email notifications
 - Artifact pushed to DockerHub
 
+---
+
 ### 📷 SonarQube Quality Gate
 
 ![SonarQube](images/sonarqube.png)
 
+---
 ### 📷 DockerHub Image
 
 ![DockerHub](images/dockerhub.png)
@@ -211,6 +214,8 @@ kubectl get pods
 kubectl get svc
 kubectl get hpa
 ```
+---
+
 ### 📷 Running Pods
 
 ![Pods](images/k8s-pods.png)
@@ -219,9 +224,9 @@ kubectl get hpa
 
 # 📈 Horizontal Pod Autoscaler (HPA)
 
-* Minimum Pods: 2
+* Minimum Pods: 3
 
-* Maximum Pods: 4
+* Maximum Pods: 5
 
 * CPU-based scaling enabled
 
@@ -238,6 +243,7 @@ kubectl get hpa
 - **Node Exporter** – Exposes node-level CPU, memory, disk metrics  
 - **Grafana** – Visualizes infrastructure and application metrics  
 
+---
 
 
 ## 📷 Prometheus Targets
@@ -261,6 +267,8 @@ Username: admin
 Password: admin
 ```
 
+---
+
 ## 📷 Grafana Dashboard
 
 ![Grafana](images/grafana.png)
@@ -280,6 +288,8 @@ Example:
 ```bash
 http://zomato.harshalgharat.site/
 ```
+---
+
 ### 📷 Application Live via Domain
 
 ![Live App](images/live-app.png)
