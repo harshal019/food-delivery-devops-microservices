@@ -42,7 +42,7 @@ This project simulates a real-world cloud production deployment environment.
 
 # 🏗️ High-Level Architecture
 
-
+![Architecture Diagram](images/architecture.png)
 
 ---
 
@@ -231,21 +231,21 @@ kubectl get hpa
 ---
 
 # 📊 Monitoring & Observability
+
 ## Monitoring Stack
 
-* Prometheus (Metrics collection)
+- **Prometheus** – Collects and stores metrics  
+- **Node Exporter** – Exposes node-level CPU, memory, disk metrics  
+- **Grafana** – Visualizes infrastructure and application metrics  
 
-### 📷 Prometheus Targets
+
+
+## 📷 Prometheus Targets
 
 ![Prometheus](images/prometheus.png)
 
-* Node Exporter
+---
 
-* Grafana (Visualization dashboards)
-
-### 📷 Grafana Dashboard
-
-![Grafana](images/grafana.png)
 
 ## Dashboards Imported
 
@@ -256,9 +256,14 @@ kubectl get hpa
 * Grafana Default Login:
 
 ```bash
+URL: http://<monitoring-server-ip>:3000
 Username: admin
 Password: admin
 ```
+
+## 📷 Grafana Dashboard
+
+![Grafana](images/grafana.png)
 
 ---
 
@@ -275,6 +280,9 @@ Example:
 ```bash
 http://zomato.harshalgharat.site/
 ```
+### 📷 Application Live via Domain
+
+![Live App](images/live-app.png)
 
 ---
 
@@ -307,7 +315,7 @@ http://zomato.harshalgharat.site/
 
 ---
 
-🧠 Challenges & Learnings
+# 🧠 Challenges & Learnings
 
 - IAM policy configuration for EKS access
 
