@@ -1,49 +1,42 @@
 # 🍔 Online Food Ordering & Delivery Application  
-## 🚀 End-to-End DevSecOps Implementation on AWS EKS
+## 🚀 Production-Grade DevSecOps Implementation on AWS EKS
 
 ![AWS](https://img.shields.io/badge/AWS-EKS-orange)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Cluster-blue)
 ![CI/CD](https://img.shields.io/badge/CI/CD-Jenkins-red)
-![Security](https://img.shields.io/badge/DevSecOps-Integrated-success)
+![DevSecOps](https://img.shields.io/badge/Security-Integrated-success)
 ![Monitoring](https://img.shields.io/badge/Monitoring-Prometheus%20%7C%20Grafana-yellow)
 
 ---
 
 # 📌 Project Overview
 
-This project demonstrates a **production-grade DevSecOps implementation** of an Online Food Ordering & Delivery Application deployed on AWS.
+This project demonstrates a **production-ready DevSecOps pipeline** for an Online Food Ordering & Delivery Application deployed on AWS.
 
-The system includes:
+It implements:
 
 - CI/CD automation using Jenkins
-- Security scanning using SonarQube, OWASP & Trivy
-- Docker containerization
+- Integrated security scanning (SonarQube, OWASP, Trivy)
+- Docker-based containerization
 - Kubernetes deployment on Amazon EKS
 - Horizontal Pod Autoscaling (HPA)
 - Monitoring using Prometheus & Grafana
-- Custom Domain mapping using Route 53
+- Custom domain mapping using Route 53
 
-This project showcases automation, scalability, security, and monitoring in a real-world cloud environment.
-
----
-
-# 🔗 Source Code Repository
-
-Application Repository:  
-https://github.com/harshal019/food-delivery-devops-microservices.git
+This project simulates a real-world cloud production deployment environment.
 
 ---
 
-# 🎯 Project Objectives
+# ⭐ Key Features
 
-- Automate build & deployment
-- Implement secure CI pipeline
-- Deploy to Kubernetes (EKS)
-- Separate Staging & Production pipelines
-- Enable Horizontal Pod Autoscaling
-- Monitor application health
-- Configure email notifications
-- Enable rollback capability
+- End-to-End CI/CD Automation  
+- DevSecOps integrated inside pipeline  
+- Separate Staging & Production pipelines  
+- Kubernetes-based scalable deployment  
+- Horizontal Pod Autoscaler (HPA)  
+- Real-time Monitoring & Observability  
+- Custom Domain with Route 53  
+- Email Notifications on build status  
 
 ---
 
@@ -53,25 +46,39 @@ https://github.com/harshal019/food-delivery-devops-microservices.git
 
 ---
 
-# 🛠️ Tools & Services Used
+# 🎯 Project Objectives
+
+- Automate build & deployment
+- Integrate security into CI pipeline
+- Deploy application to Kubernetes (EKS)
+- Enable staging & production separation
+- Implement auto scaling using HPA
+- Monitor infrastructure & workloads
+- Configure automated email alerts
+- Ensure rollback capability
+
+---
+
+# 🛠️ Tech Stack
 
 | Category | Tool |
 |----------|------|
 | Source Control | GitHub |
 | CI/CD | Jenkins |
 | Code Quality | SonarQube |
-| Dependency Scan | OWASP Dependency-Check |
-| Container Scan | Trivy |
+| Dependency Security | OWASP Dependency Check |
+| Container Security | Trivy |
 | Containerization | Docker |
-| Cloud | AWS |
-| Kubernetes | Amazon EKS |
+| Orchestration | Amazon EKS |
+| Cloud Provider | AWS |
 | Monitoring | Prometheus |
-| Dashboards | Grafana |
+| Dashboard | Grafana |
 | DNS | Route 53 |
 | Registry | DockerHub |
 | Load Balancer | AWS ALB |
 
 ---
+
 
 # ☁️ Infrastructure Setup
 
@@ -136,11 +143,12 @@ eksctl create nodegroup \
 ```bash
 aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 ```
+
 ---
 
 # 🔄 CI Pipeline – Staging
 
-## 📌 Stages Implemented
+## Stages Implemented
 
 1. Clean Workspace  
 2. Git Checkout  
@@ -156,22 +164,23 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 
 ### ✅ Pipeline Highlights
 
-- Security integrated  
-- Quality validation enabled  
-- Email notification configured  
+- Security scanning integrated
+- Quality Gate enforcement
+- Automated email notifications
+- Artifact pushed to DockerHub
 
 ---
 
 # 🚀 CD Pipeline – Production
 
-## 📌 Deployment Flow
+## Deployment Flow
 
 Staging Success  
 → Production Pipeline  
 → Configure kubeconfig  
 → Apply Kubernetes Manifests  
 → Verify Deployment  
-→ Application Live  
+→ Application Live on EKS  
 
 ---
 
@@ -183,7 +192,7 @@ Staging Success
 
 - hpa.yml – Enables auto scaling based on CPU usage
 
-Check Resources:
+### Verify Deployment
 
 ```bash
 kubectl get pods
@@ -203,18 +212,15 @@ kubectl get hpa
 ---
 
 # 📊 Monitoring & Observability
+## Monitoring Stack
 
-* Monitoring Stack:
-
-* Prometheus (Port 9090)
+* Prometheus (Metrics collection)
 
 * Node Exporter
 
-* Grafana (Port 3000)
+* Grafana (Visualization dashboards)
 
----
-
-# Dashboards Imported
+## Dashboards Imported
 
 * Node Exporter Dashboard (ID: 1860)
 
@@ -244,6 +250,7 @@ http://zomato.harshalgharat.site/
 ```
 
 ---
+
 # 🔔 Email Notifications
 
 ## 📌 Configured Using
@@ -273,15 +280,53 @@ http://zomato.harshalgharat.site/
 
 ---
 
+🧠 Challenges & Learnings
+
+- IAM policy configuration for EKS access
+
+- Debugging Kubernetes service exposure
+
+- Handling SonarQube Quality Gate failures
+
+- Securing DockerHub credentials in Jenkins
+
+- Tuning HPA scaling thresholds
+
+- Monitoring pod-level metrics using Prometheus
+
+This project strengthened my understanding of production-level DevOps workflows and troubleshooting practices.
+
+---
+
+# 🚀 Future Improvements
+
+- Blue-Green Deployment Strategy
+
+- Ingress Controller with SSL (ACM)
+
+- GitOps using ArgoCD
+
+- Infrastructure as Code with Terraform
+
+- Centralized Logging (ELK Stack)
+
+---
+
 # 🏆 Skills Demonstrated
 
-- DevOps Automation  
-- Kubernetes Administration  
-- CI/CD Pipeline Design  
-- AWS Cloud Infrastructure  
-- Monitoring & Observability  
-- DevSecOps Implementation  
-- Production Deployment  
+- DevOps Automation
+
+- Kubernetes Administration
+
+- CI/CD Pipeline Design
+
+- AWS Cloud Infrastructure
+
+- Monitoring & Observability
+
+- DevSecOps Implementation
+
+- Production Deployment
 
 ---
 
