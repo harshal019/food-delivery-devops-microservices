@@ -136,7 +136,7 @@ eksctl create nodegroup \
 ```bash
 aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 ```
-
+---
 
 # CI Pipeline – Staging
 
@@ -168,8 +168,8 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 ✔ Quality validation
 ✔ Email notification configured
 
-
-#🚀 CD Pipeline – Production
+---
+# 🚀 CD Pipeline – Production
 
 ## Flow
 
@@ -179,6 +179,8 @@ Staging Success
 → Apply Kubernetes Manifests
 → Verify Deployment
 → Application Live
+
+---
 
 # 📦 Kubernetes Configuration
 
@@ -195,6 +197,7 @@ kubectl get pods
 kubectl get svc
 kubectl get hpa
 ```
+---
 
 # 📈 Horizontal Pod Autoscaler (HPA)
 
@@ -203,6 +206,8 @@ Minimum Pods: 2
 Maximum Pods: 4
 
 CPU-based scaling enabled
+
+---
 
 # 📊 Monitoring & Observability
 
@@ -214,6 +219,7 @@ Node Exporter
 
 Grafana (Port 3000)
 
+---
 
 # Dashboards Imported
 
@@ -227,6 +233,8 @@ Grafana Default Login:
 Username: admin
 Password: admin
 ```
+
+---
 
 # 🌐 Custom Domain Setup
 
@@ -242,6 +250,7 @@ Example:
 http://zomato.harshalgharat.site/
 ```
 
+---
 # 🔔 Email Notifications
 
 Configured using:
@@ -262,6 +271,7 @@ Success
 
 Failure
 
+---
 # 🔐 Security Implementation
 Layer	Tool
 Code Quality	SonarQube
@@ -270,7 +280,9 @@ Container Security	Trivy
 IAM Control	AWS IAM
 Auto Scaling	HPA
 
-🏆 Skills Demonstrated
+---
+
+# 🏆 Skills Demonstrated
 
 DevOps Automation
 
@@ -285,6 +297,8 @@ Monitoring & Observability
 DevSecOps Implementation
 
 Production Deployment
+
+---
 
 # 👨‍💻 Author
 
