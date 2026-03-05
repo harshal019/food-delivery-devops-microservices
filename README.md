@@ -377,8 +377,11 @@ This project strengthened my understanding of production-level DevOps workflows 
 
 # 👨‍💻 Author
 
-## Harshal
-DevOps Engineer | Cloud Enthusiast | CI/CD Practitioner
+**Harshal Gharat**  
+DevOps | Kubernetes | AWS | DevSecOps  
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/harshalgharat01/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/harshal019)
 
 
 ---
