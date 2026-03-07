@@ -146,9 +146,9 @@ aws eks update-kubeconfig --name zomato-cluster --region us-east-2
 
 ---
 
-# 🔄 CI Pipeline – Staging
+# 🔄 CI/CD Pipeline
 
-### 📷 Jenkins Staging Pipeline
+### 📷 Jenkins  Pipeline
 
 ![Staging Pipeline](images/jenkins-staging.png)
 
