@@ -26,6 +26,13 @@
     name: jenkins
     state: present
 
+- name: Add jenkins user to docker group
+  user:
+    name: jenkins
+    groups: docker
+    append: yes
+    create_home: no
+
 - name: Start Jenkins
   systemd:
     name: jenkins

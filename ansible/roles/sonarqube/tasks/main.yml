@@ -10,7 +10,7 @@
   changed_when: false
 
 - name: Run SonarQube container
-  command: docker run -d --name sonarqube -p 9000:9000 -v sonarqube_data:/opt/sonarqube/data sonarqube:latest
+  command: docker run -d --name sonarqube --restart always -p 9000:9000 -v sonarqube_data:/opt/sonarqube/data sonarqube:latest
   changed_when: false
 
 - name: Wait for SonarQube
