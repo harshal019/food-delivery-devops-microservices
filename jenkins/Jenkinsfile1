@@ -9,7 +9,8 @@ pipeline {
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
         DOCKER_IMAGE = 'harshalg01/zomato-app:latest'
-        EKS_CLUSTER_NAME = 'zomato-cluster'
+        EKS_CLUSTER_NAME = 'eks'     
+        NAMESPACE = 'zomato'
         AWS_REGION = 'us-east-2'
     }
 
@@ -35,13 +36,15 @@ pipeline {
                     credentialsId: 'aws-creds'
                 ]]) {
 
-                    sh "aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}"
-
+                    sh """
+                        aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
+                        kubectl create namespace ${NAMESPACE} --dry-run=client -o yaml | kubectl apply -f -
+                    """
                     dir("k8s") {
                         sh """
-                            kubectl apply -f deployment.yaml
-                            kubectl apply -f service.yaml
-                            kubectl apply -f hpa.yaml
+                            kubectl apply -f deployment.yaml -n ${NAMESPACE}
+                            kubectl apply -f service.yaml -n ${NAMESPACE}
+                            kubectl apply -f hpa.yaml -n ${NAMESPACE}
                         """
                     }
                 }
@@ -60,12 +63,10 @@ pipeline {
                 ]]) {
 
                     sh """
-                        aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
-
-                        kubectl rollout status deployment/zomato-app
-                        kubectl get pods
-                        kubectl get svc
-                        kubectl get hpa
+                        kubectl rollout status deployment/zomato-app -n ${NAMESPACE} --timeout=5m
+                        kubectl get pods -n ${NAMESPACE}
+                        kubectl get svc -n ${NAMESPACE}
+                        kubectl get hpa -n ${NAMESPACE}
                     """
                 }
             }

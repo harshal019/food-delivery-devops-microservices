@@ -9,7 +9,7 @@ pipeline {
     }
     stages {
         stage ("clean workspace") {
-            steps {
+      github-webhook/      steps {
                 cleanWs()
             }
         }
@@ -32,7 +32,7 @@ pipeline {
         stage("Code Quality Gate"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
             } 
         }
@@ -90,10 +90,10 @@ pipeline {
             }
         }
 
-        stage ("Deploy to Container") {
+
+         stage("Trigger CD Pipeline") {
             steps {
-                sh 'docker rm -f zomato || true '
-                sh 'docker run -d --name zomato -p 3000:3000 harshalg01/zomato-app:latest'
+                build job: 'zomato-cd', wait: false
             }
         }
     }
