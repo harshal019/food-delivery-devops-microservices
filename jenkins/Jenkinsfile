@@ -9,7 +9,7 @@ pipeline {
     }
     stages {
         stage ("clean workspace") {
-      github-webhook/      steps {
+            steps {
                 cleanWs()
             }
         }
