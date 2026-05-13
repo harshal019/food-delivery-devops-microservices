@@ -22,3 +22,34 @@ npm-debug.log*
 Dockerfile.local
 .vscode/
 
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+terraform.tfstate.backup
+.terraform.lock.hcl
+crash.log
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Ansible
+*.retry
+ansible/*.retry
+ansible/inventory.ini
+ansible/*.log
+*.log
+
+
+ansible/README.MD
+
+#k8
+
+k8s/ingess-monitoring.yaml
+k8s/ingess.yaml
+
