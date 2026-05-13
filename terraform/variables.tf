@@ -1,5 +1,5 @@
 variable "aws_region" {
-  default = "us-east-1"
+  default = "us-east-2"
 }
 
 variable "env" {
@@ -16,7 +16,7 @@ variable "cluster_name" {
 }
 
 variable "jenkins_instance_type" {
-  default = "t3.medium"
+  default = "t3.large"
 }
 
 variable "jenkins_volume_size" {
