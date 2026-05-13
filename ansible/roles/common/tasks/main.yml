@@ -1,0 +1,16 @@
+
+- name: Update system packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+    autoremove: yes
+
+- name: Install basic tools
+  apt:
+    name:
+      - curl
+      - git
+      - unzip
+      - python3
+      - python3-pip
+    state: present

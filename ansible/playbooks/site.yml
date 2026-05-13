@@ -1,0 +1,14 @@
+---
+- name: Setup Complete Jenkins Server
+  hosts: jenkins_server
+  become: true
+  vars:
+    cluster_name: "eks"
+    aws_region: "us-east-2"
+
+  roles:
+    - common
+    - tools
+    - jenkins
+    - sonarqube
+
