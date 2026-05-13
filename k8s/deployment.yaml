@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zomato-app
+  namespace: zomato
   labels:
     app: zomato-app
 spec:
@@ -19,3 +20,10 @@ spec:
         image: harshalg01/zomato-app:latest
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
