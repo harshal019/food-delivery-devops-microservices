@@ -98,7 +98,7 @@ eks_instance_types = ["t3.medium"]
 ```
 
 ### 1.4 Initialize and apply
-```bash
+```bash/home/harshal/Documents/Devops/Devops-projects/food-delivery-devops-microservices/documentation.md
 terraform init
 terraform plan
 terraform apply -auto-approve
