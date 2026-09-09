@@ -49,6 +49,7 @@ resource "aws_eip" "nat" {
 resource "aws_nat_gateway" "main" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.public[0].id
+
   tags          = { Name = "${var.project_name}-nat-${var.env}" }
 }
 
@@ -94,7 +95,7 @@ resource "aws_security_group" "eks_cluster" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr] # Only from within VPC
+    cidr_blocks = [var.vpc_cidr] 
   }
   egress {
     from_port   = 0

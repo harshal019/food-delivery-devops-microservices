@@ -1,9 +1,4 @@
-# ==============================================
-# MODULE 1: VPC (Network)
 
-
-
-# ==============================================
 module "vpc" {
   source = "./modules/vpc"
 
@@ -16,9 +11,7 @@ module "vpc" {
   availability_zones   = ["${var.aws_region}a", "${var.aws_region}b"] # Fixed syntax
 }
 
-# ==============================================
-# MODULE 2: IAM (Roles & Instance Profiles)
-# ==============================================
+
 module "iam" {
   source = "./modules/iam"
 
@@ -27,11 +20,7 @@ module "iam" {
   cluster_name = var.cluster_name
 }
 
-# ==============================================
-# MODULE 3: EKS (Kubernetes Cluster)
-# ============================================== ==============================================
-# MODULE 3: EKS (Kubernetes Cluster)
-# ==============================================
+
 module "eks" {
   source = "./modules/eks"
 
@@ -54,17 +43,15 @@ module "eks" {
     }
   }
 
- # Addons compatible with Kubernetes 1.31 (AWS default versions)
   addons = {
-    coredns    = null    # AWS will use default compatible version
-    kube-proxy = null    # AWS will use default compatible version
-    vpc-cni    = null    # AWS will use default compatible version
+    coredns    = null    
+    kube-proxy = null    
+    vpc-cni    = null    
   }
 }
 
-# ==============================================
-# MODULE 4: Jenkins Server (Public) - Hardcoded Ubuntu AMI
-# ==============================================
+
+
 module "jenkins" {
   source = "./modules/jenkins-ec2"
 

@@ -111,3 +111,12 @@ resource "aws_iam_role_policy" "jenkins_eks_policy" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "jenkins_eks_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = aws_iam_role.jenkins.name
+}
+
+resource "aws_iam_role_policy_attachment" "jenkins_eks_node_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.jenkins.name
+}

@@ -51,11 +51,12 @@ resource "aws_eks_node_group" "main" {
 resource "aws_eks_addon" "addons" {
   for_each = var.addons
 
-  cluster_name  = aws_eks_cluster.main.name
-  addon_name    = each.key
-  addon_version = each.value
-  resolve_conflicts_on_update = "OVERWRITE"   # Add this to handle version updates
-
+  cluster_name = aws_eks_cluster.main.name
+  addon_name   = each.key
+  
+  # Only set version if not null
+  addon_version = each.value != null ? each.value : null
+  
   depends_on = [aws_eks_node_group.main]
 }
 
