@@ -2,7 +2,7 @@
 module "vpc" {
   source = "./modules/vpc"
 
-  env          = var.env
+  env                  = var.env
   project_name         = var.project_name
   cluster_name         = var.cluster_name
   vpc_cidr             = "10.0.0.0/16"
@@ -15,7 +15,7 @@ module "vpc" {
 module "iam" {
   source = "./modules/iam"
 
-  env  = var.env
+  env          = var.env
   project_name = var.project_name
   cluster_name = var.cluster_name
 }
@@ -24,14 +24,14 @@ module "iam" {
 module "eks" {
   source = "./modules/eks"
 
-  env          = var.env
-  cluster_name         = var.cluster_name
-  cluster_version      = "1.31"              
-  vpc_id               = module.vpc.vpc_id
-  private_subnet_ids   = module.vpc.private_subnet_ids
-  cluster_sg_ids       = [module.vpc.eks_cluster_sg_id]
-  cluster_role_arn     = module.iam.eks_cluster_role_arn
-  nodegroup_role_arn   = module.iam.eks_nodegroup_role_arn
+  env                = var.env
+  cluster_name       = var.cluster_name
+  cluster_version    = "1.31"
+  vpc_id             = module.vpc.vpc_id
+  private_subnet_ids = module.vpc.private_subnet_ids
+  cluster_sg_ids     = [module.vpc.eks_cluster_sg_id]
+  cluster_role_arn   = module.iam.eks_cluster_role_arn
+  nodegroup_role_arn = module.iam.eks_nodegroup_role_arn
 
   node_groups = {
     main = {
@@ -44,9 +44,9 @@ module "eks" {
   }
 
   addons = {
-    coredns    = null    
-    kube-proxy = null    
-    vpc-cni    = null    
+    coredns    = null
+    kube-proxy = null
+    vpc-cni    = null
   }
 }
 
@@ -65,7 +65,7 @@ module "aws-load-balancer-controller" {
 module "jenkins" {
   source = "./modules/jenkins-ec2"
 
-  env               = var.env
+  env                       = var.env
   project_name              = var.project_name
   vpc_id                    = module.vpc.vpc_id
   public_subnet_ids         = module.vpc.public_subnet_ids
