@@ -56,59 +56,24 @@ pipeline {
             }
         }
 
-
-        stage ("Trivy File Scan") {
+         stage("Trivy File Scan") {
             steps {
-                sh "trivy fs . > trivy.txt"
+                sh "trivy fs . > trivy.txt || true"
             }
         }
 
-        stage ("Build Docker Image") {
+        stage("Build Docker Image") {
             steps {
                 sh "docker build -t zomato -f docker/Dockerfile ."
             }
         }
 
-        stage ("Trivy Image Scan") {
+        stage("Trivy Image Scan") {
             steps {
-                 sh "trivy image zomato > trivy-image.txt || true"
-stage ("Trivy File Scan") {
-            steps {
-                sh "trivy fs . > trivy.txt"
+                sh "trivy image zomato > trivy-image.txt || true"
             }
         }
 
-        stage ("Build Docker Image") {
-            steps {
-                sh "docker build -t zomato -f docker/Dockerfile ."
-            }stage ("Trivy File Scan") {
-            steps {
-                sh "trivy fs . > trivy.txt"
-            }
-        }
-
-        stage ("Build Docker Image") {
-            steps {
-                sh "docker build -t zomato -f docker/Dockerfile ."
-            }
-        }
-
-        stage ("Trivy Image Scan") {
-            steps {
-                 sh "trivy image zomato > trivy-image.txt || true"
-
-            }
-        }
-        }
-
-        stage ("Trivy Image Scan") {
-            steps {
-                 sh "trivy image zomato > trivy-image.txt || true"
-
-            }
-        }
-            }
-        }
 
         stage ("Tag & Push to DockerHub") {
             steps {
