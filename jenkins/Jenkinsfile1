@@ -46,6 +46,9 @@ pipeline {
                             kubectl apply -f deployment.yaml -n ${NAMESPACE}
                             kubectl apply -f service.yaml -n ${NAMESPACE}
                             kubectl apply -f hpa.yaml -n ${NAMESPACE}
+                            kubectl apply -f ingress.yaml -n ${NAMESPACE}
+
+
                         """
                     }
                 }
@@ -68,6 +71,8 @@ pipeline {
                         kubectl get pods -n ${NAMESPACE}
                         kubectl get svc -n ${NAMESPACE}
                         kubectl get hpa -n ${NAMESPACE}
+                        kubectl get ingress -n ${NAMESPACE}
+                        
                     """
                 }
             }
