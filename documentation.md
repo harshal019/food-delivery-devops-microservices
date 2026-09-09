@@ -318,7 +318,7 @@ pipeline {
             }
         }
         stage('Trigger CD') {
-            steps { build job: 'zomato-prod', wait: false }
+            steps { build job: 'zomato-cd', wait: false }
         }
     }
     post {
