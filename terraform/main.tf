@@ -26,7 +26,7 @@ module "eks" {
 
   env          = var.env
   cluster_name         = var.cluster_name
-  cluster_version      = "1.31"              # Changed to 1.31
+  cluster_version      = "1.31"              
   vpc_id               = module.vpc.vpc_id
   private_subnet_ids   = module.vpc.private_subnet_ids
   cluster_sg_ids       = [module.vpc.eks_cluster_sg_id]

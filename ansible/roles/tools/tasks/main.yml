@@ -35,7 +35,7 @@
   get_url:
     url: "https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl"
     dest: /usr/local/bin/kubectl
-    mode: '0700'
+    mode: '0755'
 
 #Helm
 - name: Install Helm

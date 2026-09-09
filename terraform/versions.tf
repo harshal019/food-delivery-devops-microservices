@@ -7,11 +7,11 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "zomato-terraform-state-019"
+    bucket         = "zomato-terraform-state-01"
     key            = "dev/terraform.tfstate"
     region         = "us-east-2"
     encrypt        = true
-    dynamodb_table = "zomato-terraform-lock"
+    use_lockfile   = true
   }
 }
 

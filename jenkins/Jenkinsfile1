@@ -100,7 +100,7 @@ pipeline {
                     </body>
                     </html>
                 """,
-                to: "harshaldgharat01@gmail.com",
+                to: "harshal.d.gharat@gmail.com",
                 mimeType: "text/html",
                 attachLog: true,
                 attachmentsPattern: "trivy*.txt"
