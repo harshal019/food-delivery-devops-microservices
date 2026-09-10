@@ -2,11 +2,11 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY app/package*.json ./
 
 RUN npm ci
 
-COPY . .
+COPY app/ .
 
 RUN npm run build
 
