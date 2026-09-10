@@ -19,7 +19,11 @@
     groups: docker
     append: yes
   
-
+- name: Restart Jenkins to apply Docker group
+  systemd:
+    name: jenkins
+    state: restarted
+    
 #aws cli
 - name: Install AWS CLI v2 
   shell: |
