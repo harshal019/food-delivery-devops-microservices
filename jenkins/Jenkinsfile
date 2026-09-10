@@ -46,13 +46,23 @@ pipeline {
             }
         }
 
-        stage('OWASP FS SCAN') {
+       stage("OWASP FS Scan") {
             steps {
-                dependencyCheck(
-                    additionalArguments: '--scan ./app --out .',
-                    odcInstallation: 'DP-Check'
-                )
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                withCredentials([
+                    string(
+                        credentialsId: 'nvd-api-key',
+                        variable: 'NVD_API_KEY'
+                    )
+                ]) {
+                    dependencyCheck(
+                        additionalArguments: "--scan ./app --out . --nvdApiKey ${NVD_API_KEY}",
+                        odcInstallation: 'DP-Check'
+                    )
+
+                    dependencyCheckPublisher(
+                        pattern: '**/dependency-check-report.xml'
+                    )
+                }
             }
         }
 
