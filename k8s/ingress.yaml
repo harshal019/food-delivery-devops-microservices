@@ -8,6 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "443"
+
 spec:
   ingressClassName: alb
   rules:
@@ -18,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: zomato-app
+                name: zomato-svc
                 port:
                   number: 80
   
