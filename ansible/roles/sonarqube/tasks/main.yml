@@ -9,9 +9,26 @@
   command: docker volume create sonarqube_data
   changed_when: false
 
-- name: Run SonarQube container
-  command: docker run -d --name sonarqube --restart always -p 9000:9000 -v sonarqube_data:/opt/sonarqube/data sonarqube:latest
+- name: Check if SonarQube container exists
+  shell: docker ps -a --filter "name=^sonarqube$" --format "{{ '{{' }}.Names{{ '}}' }}"
+  register: sonarqube_container
   changed_when: false
+
+- name: Create SonarQube container
+  command: docker run -d --name sonarqube --restart always -p 9000:9000 \
+    -v sonarqube_data:/opt/sonarqube/data
+    sonarqube:latest
+  when: sonarqube_container.stdout == ""
+
+- name: Check SonarQube running status
+  shell: docker inspect -f "{{ '{{' }}.State.Running{{ '}}' }}" sonarqube
+  register: sonarqube_running
+  changed_when: false
+  failed_when: false
+
+- name: Start SonarQube if stopped
+  command: docker start sonarqube
+  when: sonarqube_running.stdout != "true"
 
 - name: Wait for SonarQube
   wait_for:

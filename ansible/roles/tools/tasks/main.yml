@@ -30,10 +30,10 @@
   args:
     creates: /usr/local/bin/aws
 
-#kubectl
-- name: Install kubectl 
+# kubectl
+- name: Install kubectl
   get_url:
-    url: "https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl"
+    url: "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"
     dest: /usr/local/bin/kubectl
     mode: '0755'
 
