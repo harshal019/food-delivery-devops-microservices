@@ -55,7 +55,7 @@ pipeline {
                     )
                 ]) {
                     dependencyCheck(
-                        additionalArguments: "--scan ./app --out . --nvdApiKey ${NVD_API_KEY}",
+                        additionalArguments: '--scan ./app --out . --nvdApiKey ${NVD_API_KEY}',
                         odcInstallation: 'DP-Check'
                     )
 
